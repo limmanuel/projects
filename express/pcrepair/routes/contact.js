@@ -2,6 +2,7 @@ var express = require('express');
 var nodemailer = require('nodemailer');
 var router = express.Router();
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 router.get('/', function(req, res, next) {
   res.render('contact', { 
@@ -15,9 +16,6 @@ router.post('/send', function(req,res,next){
 		auth: {
 			user: 'limmanuellopez@gmail.com',
 			pass: ''
-		},
-		tls:{
-			rejectAuthorized : false
 		}
 	});
 
