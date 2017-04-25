@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
-
+var port = process.env.PORT || 3000;
 var contact = require('./html/contact')
 
 app.use(bodyParser.json());
@@ -24,7 +24,7 @@ app.use('/download', function(req, res) {
 	res.download(path.join(__dirname + '/download/Limmanuel-B.-Lopez-Resume.docx'))
 });
 
-app.listen(3000,function(){
+app.listen(port,function(){
 	console.log("starting");
 });
 

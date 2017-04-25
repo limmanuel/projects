@@ -9,20 +9,20 @@ router.get('/', function(req, res, next) {
   	title: 'Contact' 
   });
 });
-router.post('/send', function(req,ress){
+router.post('/send', function(req,res){
 	console.log("sending");
 	var transporter = nodemailer.createTransport({
 		service:'Gmail',
 		auth: {
-			user: 'limmanuellopez@gmail.com',
-			pass: 'cj3u7hx3t'
+			user: 'rndmlpz@gmail.com',
+			pass: 'random123'
 		}
 	});
 
 	var mailOptions = {
-		from: '"Limmanuel Lopez ?" <limmanuellopez@gmail.com>',
-		to: 'lopezlimmanuel@gmail.com',
-		subject: 'testing my website',
+		from: '"Limmanuel Lopez ?" <rndmlpz@gmail.com>',
+		to: 'limmanuellopez@gmail.com',
+		subject: 'message from my website',
 		text: 'Message from your HTML Name: '+ req.body.name + 'Email: ' + req.body.email + 'Message: ' + req.body.message ,
 		html: '<p>Message from your HTML </p><ul><li>Name: '+ req.body.name + '</li><li>Email: ' + req.body.email + '</li><li>Message: ' + req.body.message + '</li></ul>'
 	}
