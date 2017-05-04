@@ -1,4 +1,35 @@
 extend layout
 
 block content
-	h1 #{title}
+	.container
+		h1 #{title}
+			div.well
+				h3 #{article.title}
+				h5 #{article.author}
+				h6 #{moment(article.created_at).format('MMM do YYYY ; hh:mm a')}
+				h4 #{article.body}
+		h3 Add a Comment
+		ul.errors
+			if errors
+				each error, i in errors
+					li.alert.alert-danger #{error.msg}
+		form.comment-form(method='post', action='/articles/comment/add/'+article._id)
+			.form-group
+				label Subject:
+				input.form-control(type='text', name='comment_subject')
+			.form-group
+				label Name:
+				input.form-control(type='text', name='comment_author')
+			.form-group
+				label Email:
+				input.form-control(type='text', name='comment_email')
+			.form-group
+				label Comment:
+				textarea.form-control(name='comment_body')
+			input.btn.btn-default(name='submit', type='submit', value='Add Comment')
+		h3 Comments
+		each comment, i in article.comments
+			div.well
+				h4 #{comment.comment_subject}
+				h5 #{comment.comment_author}
+				h4 #{comment.comment_body}

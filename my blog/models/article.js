@@ -45,6 +45,10 @@ module.exports.getArticles = function(callback, limit){
 	Article.find(callback).limit(limit).sort([['title','ascending']]);
 }
 
+module.exports.getCategoryArticle = function(categoryId,callback){
+	let query = {category: categoryId}
+	Article.find(query,callback).sort([['title','ascending']]);
+}
 
 module.exports.addArticle = function(article, callback){
 	Article.create(article,callback);
@@ -60,4 +64,15 @@ module.exports.updateArticle = function(query, update, options, callback){
 
 module.exports.removeArticle = function(query, callback){
 	Article.remove(query, callback);
+}
+
+module.exports.addComment = function(query, comment, callback){
+
+	Article.update(query,
+	{
+		$push:{
+			comments:  comment
+		}
+	},
+	 callback);
 }

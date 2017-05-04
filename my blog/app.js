@@ -5,12 +5,12 @@ var session = require('express-session');
 var validator = require('express-validator');
 var mongoose = require('mongoose');
 
+//mongoose.connect('mongodb://localhost');
 mongoose.connect('mongodb://admin:admin@ds119151.mlab.com:19151/bucket-list');
 var db = mongoose.connection;
 
 var app = express();
 var port = process.env.PORT || 3000;
-
 
 var mongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://admin:admin@ds119151.mlab.com:19151/bucket-list';

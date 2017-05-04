@@ -3,7 +3,9 @@ extend layout
 block content
 	.container
 		h1 #{title}
-		ul.list-group
-			each article, i in articles
-				li.list-group-item
-					a(href='/articles/'+article._id) #{article.title}
+		each article, i in articles
+			div.well
+				h4
+					a(href='/articles/show/'+article._id) #{article.title}
+				h5 #{article.author}
+				p #{article.body}

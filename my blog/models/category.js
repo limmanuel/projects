@@ -15,7 +15,6 @@ module.exports.getCategories = function(callback, limit){
 	Category.find(callback).limit(limit).sort([['title','ascending']]);
 }
 
-
 module.exports.addCategory = function(category, callback){
 	Category.create(category,callback);
 }
